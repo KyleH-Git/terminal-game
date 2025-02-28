@@ -6,9 +6,30 @@ console.log(`Your name is ${username}`);
 
 // player object to track money and current tool
 const player = {
-    currentTool: 'Teeth',
+    toolLevel: 0,
     currentMoney: 0,
-    toolList: ['teeth', 'rusty scissors', 'push lawnmower', 'battery lawnmower', 'unpaid interns'],
+    toolList: [
+        teeth = {
+            toolName: 'Teeth',
+            profit: 1,
+        }, 
+        scissors = {
+            toolName: 'Rusty Scissors',
+            proft: 5,
+        },
+        push = {
+            toolName: 'Push Lawnmower',
+            profit: 50,
+        },
+        battery = {
+            toolName: 'Battery Lawnmower',
+            profit: 100,
+        },
+        intern = {
+            toolName: 'Unpaid Interns',
+            profit: 250,
+        },
+    ],
 
 };
 
@@ -18,7 +39,7 @@ const cutGrass = () => {
 }
 
 // main game loop
-let input = prompt(`Cut the grass using ${player.currentTool}? Yes/No `);
+let input = prompt(`Cut the grass using ${player.toolList[player.toolLevel].toolName}? Yes/No `);
 
 
 input = input.toLowerCase();
@@ -26,8 +47,8 @@ input = input.slice(0, 1);
 
 
 if(input == 'y'){
-   
-    
+    console.log(`You cut some lawns using ${player.toolList[player.toolLevel].toolName}, earning ${player.toolList[player.toolLevel].profit}$!`);
+    player.currentMoney += player.toolList[player.toolLevel].profit;
 }
 
 
